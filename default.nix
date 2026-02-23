@@ -1,0 +1,6 @@
+{pkgs ? import <nixpkgs> {}}: {
+  python-env = import ./pkgs/python-env/default.nix {inherit pkgs;};
+  rbw-autofill = pkgs.callPackage ./pkgs/rbw-autofill/default.nix {};
+  vivaldi-wayland = pkgs.callPackage ./pkgs/vivaldi-wayland/default.nix {};
+  walker-obsidian-search = pkgs.callPackage ./pkgs/walker-obsidian-search/default.nix {};
+}

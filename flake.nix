@@ -54,6 +54,11 @@
           hyprcursor-phinger = (inputs.hyprcursor-phinger.packages.${system} or {}).default or null;
         }
     );
+
+    homeManagerModules = {
+      hyprcursor-phinger = inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger;
+    };
+
     overlays.default = final: prev: import ./default.nix {pkgs = prev;};
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
   };

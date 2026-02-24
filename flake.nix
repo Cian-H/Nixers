@@ -57,6 +57,7 @@
 
     homeManagerModules = {
       hyprcursor-phinger = inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger;
+      walker = inputs.walker.homeManagerModules.default;
     };
 
     overlays.default = final: prev: import ./default.nix {pkgs = prev;};

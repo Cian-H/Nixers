@@ -38,8 +38,14 @@
   in {
     packages = forAllSystems (
       system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-        unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        unstablePkgs = import inputs.nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
         walkerPkg = (inputs.walker.packages.${system} or {}).default or null;
         localPkgs = import ./default.nix {
           inherit pkgs unstablePkgs;
